@@ -1,0 +1,62 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + d
+	dmenu_run -fn 'JetBrainsMonoNL-18'
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + w
+	bspc node -k
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+#ijol karo seng gede
+super + g
+	bspc node -s biggest.window	
+# tiled, float(s), full
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# simply switch to the other
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+#1-2-3-4-5 vise versa
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# last used
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# pindah
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+super + r
+    /home/aji/Documents/work.sh
+
+super + p
+    /home/aji/Documents/p2.sh
